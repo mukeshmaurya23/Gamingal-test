@@ -1,0 +1,26 @@
+const Colors = {
+  primaryColor: "#FD4B01",
+  secondaryColor: "#B03B01",
+  greenFadeBg: "#4CAF501A",
+  greenText: "#4CAF50",
+  yellowFadeBg: "#FBC02D1A",
+  yellowText: "#FBC02D",
+  blueFadeBg: "#64B5F61A",
+  blueText: "#64B5F6",
+  textLightGrey: "#7E7B71",
+  grey: "#9E9E9E",
+  textGrey: "#1E1815",
+  lightTextGrey: "#1E1815BF",
+  textFormGrey: "#1E1E1E",
+  lightWhiteGrey: "#1E1E1E40",
+  cancelRed: "#CE0E0E",
+  lightWhite: "#FAFAFA",
+  white: "#FFFFFF",
+  offWhite: "#F6F6F6",
+  lightGrey: "rgba(225, 225, 225, 1)",
+  transparentEffect: "rgba(205,205,205,1)",
+  transparent: "#F4F7F6s",
+  textWhite: "#F4F7F6",
+};
+
+export default Colors;
