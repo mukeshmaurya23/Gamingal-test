@@ -31,13 +31,9 @@ const Live = ({ navigation }: any) => {
   const nav = useNavigation<any>();
   const renderItemForMatches = ({ item }: { item: any }) => {
     const navigateToDetails = () => {
-      nav.navigate("MatchDetails", {
+      nav.navigate("LiveDetails", {
         team1: item?.team1,
         team2: item?.team2,
-        time: item?.time,
-        team1FullName: item?.team1FullName,
-        team2FullName: item?.team2FullName,
-        maxPrice: item?.maxPrice,
       });
     };
     return (

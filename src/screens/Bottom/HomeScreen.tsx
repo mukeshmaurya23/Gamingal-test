@@ -68,7 +68,7 @@ export const featuredData = [
 export const matchesData = [
   {
     id: 1,
-    team1: "RCB",
+    team1: "MI",
     team2: "CSK",
     time: "9.00 PM",
     team1FullName: "Royalle Challengers Bangalore",

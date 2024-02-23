@@ -4,7 +4,7 @@ import { moderateScale } from "react-native-size-matters";
 import LeftArrow2 from "../../assets/svg/LeftArrow2";
 import TopBar from "../../components/TopBar";
 
-const Legality = ({ navigation }: any) => {
+const LegalityScreen = ({ navigation }: any) => {
   return (
     <View style={{ flex: 1 }}>
       <TopBar
@@ -75,6 +75,6 @@ const Legality = ({ navigation }: any) => {
   );
 };
 
-export default Legality;
+export default LegalityScreen;
 
 const styles = StyleSheet.create({});

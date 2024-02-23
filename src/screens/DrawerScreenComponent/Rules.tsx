@@ -23,7 +23,7 @@ const Data = [
     title: "T10",
   },
 ];
-const Rules = ({ navigation }: any) => {
+const RulesScreen = ({ navigation }: any) => {
   return (
     <>
       <TopBar
@@ -38,6 +38,6 @@ const Rules = ({ navigation }: any) => {
   );
 };
 
-export default Rules;
+export default RulesScreen;
 
 const styles = StyleSheet.create({});

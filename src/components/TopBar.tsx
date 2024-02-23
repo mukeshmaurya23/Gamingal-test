@@ -12,6 +12,7 @@ import BellIcon from "../assets/svg/BellIcon";
 import HamBurger from "../assets/svg/HamBurger";
 import { moderateScale } from "react-native-size-matters";
 import fontStyles from "../styles/font-styles";
+import { useNavigation } from "@react-navigation/native";
 
 interface TopBarProps {
   label: string;
@@ -22,7 +23,8 @@ interface TopBarProps {
 const TopBar = (props: any) => {
   const { label, navigation, headText, icon, rootStyle, hideBellAndWallet } =
     props;
-  console.log(icon.name, "icon");
+  const nav = useNavigation();
+
   return (
     <View
       style={[
@@ -47,7 +49,7 @@ const TopBar = (props: any) => {
           onPress={
             icon?.name === "HamBurger"
               ? () => navigation.openDrawer()
-              : () => navigation.goBack()
+              : () => nav.goBack()
           }
         >
           {/* <HamBurger /> */}

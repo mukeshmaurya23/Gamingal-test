@@ -13,9 +13,25 @@ import { StatusBar, View } from "react-native";
 import TopTabNavigator from "./TopTabNavigator";
 import TopBar from "../components/TopBar";
 import HamBurger from "../assets/svg/HamBurger";
+import { useEffect } from "react";
+import { userData } from "../components/utils/AsyncStorageUtil";
 const Tab = createBottomTabNavigator();
 
 function BottomNavigator() {
+  useEffect(() => {
+    // userData.retreiveInLocalData("token").then((res) => {
+    //   userData.retreiveInLocalData("session").then((res) => {
+    //     console.log("session", res);
+    //   });
+    // });
+    userData.retreiveInLocalData("token").then((res) => {
+      console.log("token", res);
+    });
+    userData.retreiveInLocalData("session").then((res) => {
+      console.log("session", res);
+    });
+  }, []);
+
   return (
     <>
       <Tab.Navigator

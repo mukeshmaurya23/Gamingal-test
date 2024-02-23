@@ -6,10 +6,20 @@ import TermsAndCondition from "../screens/DrawerScreenComponent/TermsAndConditio
 import BottomNavigator from "./BottomNavigator";
 import LiveDetails from "../screens/TopTab/LiveDetails";
 import MatchDetailsScreen from "../screens/Bottom/MatchDetailsScreen";
+import Notification from "../screens/Notification";
+import Rules from "../assets/svg/Rules";
+import RefundPolicy from "../screens/DrawerScreenComponent/RefundPolicy";
+import PrivacyPolicy from "../screens/DrawerScreenComponent/PrivacyPolicy";
+import Legality from "../assets/svg/Legality";
+import WalletScreen from "../screens/WalletScreen";
+import MyContextDetails from "../screens/Bottom/MyContextDetails";
+import PolicyScreen from "../screens/DrawerScreenComponent/PolicyScreen";
+import RulesScreen from "../screens/DrawerScreenComponent/Rules";
+import LegalityScreen from "../screens/DrawerScreenComponent/Legality";
 
 const Drawer = createDrawerNavigator();
 
-function DrawerNavigator() {
+function DrawerNavigator({ route, navigation }: any) {
   return (
     <Drawer.Navigator
       drawerContent={(props) => {
@@ -39,6 +49,19 @@ function DrawerNavigator() {
         // }}
       />
       <Drawer.Screen name="MatchDetails" component={MatchDetailsScreen} />
+
+      <Drawer.Screen name="MyContextDetails" component={MyContextDetails} />
+      <Drawer.Screen name="LiveDetails" component={LiveDetails} />
+      <Drawer.Screen name="Notification" component={Notification} />
+      <Drawer.Screen name="Wallet" component={WalletScreen} />
+
+      <Drawer.Screen name="Policies" component={PolicyScreen} />
+      <Drawer.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
+      <Drawer.Screen name="RefundPolicy" component={RefundPolicy} />
+
+      <Drawer.Screen name="Rules" component={RulesScreen} />
+      <Drawer.Screen name="TermsAndCondition" component={TermsAndCondition} />
+      <Drawer.Screen name="Legality" component={LegalityScreen} />
 
       {/* <Drawer.Screen
         name="AppBottomNavigator"
