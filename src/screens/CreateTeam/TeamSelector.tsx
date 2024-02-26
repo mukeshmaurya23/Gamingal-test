@@ -19,12 +19,15 @@ const TeamSelector = ({
   const renderPlayer = ({ item,index }: any) =>{ 
     const isLastItem = index === teamData.length - 1;
     return(
-      <Pressable style={[styles.header,{ borderBottomWidth: isLastItem ? 0 :StyleSheet.hairlineWidth,}]} onPress={()=>handleTeamSelect(item)}>
-        <View style={{width:'60%',}}>
+      <Pressable style={[styles.header,{ borderBottomWidth: isLastItem ? 0 : moderateScale(1)}]} onPress={()=>handleTeamSelect(item)}>
+        <View style={{width:'60%'}}>
           <View style={{
             borderLeftWidth: selectedPlayers?.players?.some(
               (player: any) => player.name === item.name,
-            ) ? 1 : 0,
+            ) ? moderateScale(2) : 0,
+            borderLeftColor: selectedPlayers?.players?.some(
+              (player: any) => player.name === item.name,
+            ) ? '#1737AF' : "",
             flexDirection:'row'}}>
             <View style={{paddingHorizontal:moderateScale(10),rowGap:moderateScale(5),justifyContent:'center'}}>
               <Jeoursy/>
@@ -37,9 +40,9 @@ const TeamSelector = ({
             </View>
           </View>
         </View>
-        <View style={{width:'16%',alignSelf:'center'}}><Text>10</Text></View>
-        <View style={{width:'16%',alignSelf:'center'}}><Text>100</Text></View>
-        <View style={{width:'7%',justifyContent:'center',alignItems:'center'}}>
+        <View style={[{width:'15%',alignSelf:'center'},styles.centerACJC]}><Text>10</Text></View>
+        <View style={[{width:'15%',alignSelf:'center'},styles.centerACJC]}><Text>100</Text></View>
+        <View style={[{width:'10%',justifyContent:'center',alignItems:'center'},styles.centerACJC]}>
         <CheckBox
             style={{}}
             value={selectedPlayers?.players?.some(
@@ -65,17 +68,16 @@ const TeamSelector = ({
       }}
     >
       <View style={styles.header}>
-        <View style={{width:'60%',alignSelf:'center'}}><Text>Player</Text></View>
-        <View style={{width:'15%',alignSelf:'center'}}><Text>Points</Text></View>
-        <View style={{width:'15%',alignSelf:'center'}}><Text>Credits</Text></View>
-        <View style={{width:'7%'}}></View>
+        <View style={[{width:'60%',alignSelf:'center',paddingLeft:moderateScale(10)}]}><Text>Player</Text></View>
+        <View style={[{width:'15%',alignSelf:'center'},styles.centerACJC]}><Text>Points</Text></View>
+        <View style={[{width:'15%',alignSelf:'center'},styles.centerACJC]}><Text>Credits</Text></View>
+        <View style={[{width:'10%'},styles.centerACJC]}></View>
       </View>
       <FlatList
         data={teamData}
         style={{flex:1}}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{flexGrow:1}}
-        ItemSeparatorComponent={()=>(<View style={{padding:moderateScale(10)}}/>)}
         ListFooterComponent={()=>(<View style={{marginBottom:moderateScale(70)}}/>)}
         keyExtractor={(item) => item.name}
         renderItem={renderPlayer}
@@ -89,7 +91,12 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     borderBottomColor: '#CCC',
-    paddingVertical: 10,
+    paddingVertical: moderateScale(15),
+    borderBottomWidth: StyleSheet.hairlineWidth,
   },
+  centerACJC:{
+    alignItems:'center',
+    justifyContent:'center'
+  }
 });
 export default TeamSelector;
