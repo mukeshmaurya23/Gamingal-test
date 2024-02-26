@@ -30,15 +30,15 @@ const CreateTeam = ({ navigation }: any) => {
           ...player,
           teamName,
         })),
-        allRounder: team.allRounder.map((player) => ({
+        allRounder: team.allRounder.map((player:any) => ({
           ...player,
           teamName,
         })),
-        bowler: team.bowler.map((player) => ({
+        bowler: team.bowler.map((player:any) => ({
           ...player,
           teamName,
         })),
-        wicketKeeper: team.wicketKeeper.map((player) => ({
+        wicketKeeper: team.wicketKeeper.map((player:any) => ({
           ...player,
           teamName,
         })),
@@ -182,14 +182,6 @@ const CreateTeam = ({ navigation }: any) => {
 
   return (
     <View style={{ flex: 1 }}>
-      {/* <TopBar
-        label="Start in 2 hours"
-        headText="Create a Team"
-        navigation={navigation}
-        goToMainScreen={true}
-        icon={LeftArrow2}
-        hideBellAndWallet={true}
-      /> */}
       <View>
         <CreateTeamTopBar
           navigation={navigation}
@@ -201,9 +193,9 @@ const CreateTeam = ({ navigation }: any) => {
           team2="CSK"
         />
       </View>
-      <ScrollView
+      <View
         style={{
-          //  flex: 1,
+           flex: 1,
           backgroundColor: "white",
         }}
       >
@@ -271,40 +263,7 @@ const CreateTeam = ({ navigation }: any) => {
         {selectedTab === 1 && <StepTwo />}
         {selectedTab === 2 && <StepThree />}
         {selectedTab === 3 && <StepFour />}
-        {/* <TeamSelector
-          teamData={allWicketKeepers}
-          role="WK"
-          onPlayerSelect={handlePlayerSelect}
-          selectedPlayers={selectedPlayers}
-          count={count}
-          selectedPlayersCount={selectedPlayers.selectedPlayerCount}
-        />
-        <TeamSelector
-          teamData={allBatsmen}
-          role="BAT"
-          count={count}
-          selectedPlayers={selectedPlayers}
-          onPlayerSelect={handlePlayerSelect}
-          selectedPlayersCount={selectedPlayers.selectedPlayerCount}
-        />
-        <TeamSelector
-          teamData={allAllRounders}
-          role="AR"
-          count={count}
-          selectedPlayers={selectedPlayers}
-          onPlayerSelect={handlePlayerSelect}
-          selectedPlayersCount={selectedPlayers.selectedPlayerCount}
-        />
-        <TeamSelector
-          teamData={allBowlers}
-          role="BOWL"
-          count={count}
-          selectedPlayers={selectedPlayers}
-          onPlayerSelect={handlePlayerSelect}
-          selectedPlayersCount={selectedPlayers.selectedPlayerCount}
-        /> */}
-
-        <View
+        {/* <View
           style={{
             paddingHorizontal: 10,
           }}
@@ -336,8 +295,8 @@ const CreateTeam = ({ navigation }: any) => {
               </View>
             )}
           />
-        </View>
-      </ScrollView>
+        </View> */}
+      </View>
       <View
         style={{
           flexDirection: "row",

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { FlatList, Text, View } from "react-native";
+import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import CheckBox from "@react-native-community/checkbox";
 import { moderateScale } from "react-native-size-matters";
+import Jeoursy from "../../assets/svg/LiveMatchesIcon/Jeoursy";
 
 const TeamSelector = ({
   teamData = [],
@@ -10,166 +11,85 @@ const TeamSelector = ({
   selectedPlayersCount,
   selectedPlayers,
   count,
-}) => {
+}: any) => {
   const handleTeamSelect = (player: any) => {
     onPlayerSelect(player, role);
   };
 
+  const renderPlayer = ({ item,index }: any) =>{ 
+    const isLastItem = index === teamData.length - 1;
+    return(
+      <Pressable style={[styles.header,{ borderBottomWidth: isLastItem ? 0 :StyleSheet.hairlineWidth,}]} onPress={()=>handleTeamSelect(item)}>
+        <View style={{width:'60%',}}>
+          <View style={{
+            borderLeftWidth: selectedPlayers?.players?.some(
+              (player: any) => player.name === item.name,
+            ) ? 1 : 0,
+            flexDirection:'row'}}>
+            <View style={{paddingHorizontal:moderateScale(10),rowGap:moderateScale(5),justifyContent:'center'}}>
+              <Jeoursy/>
+              <Text>{item.teamName}</Text>
+            </View>
+            <View style={{rowGap:moderateScale(2)}}>
+              <View><Text>{item.name}</Text></View>
+              <View><Text>95.5% Selected</Text></View>
+              <View><Text>Played last match</Text></View>
+            </View>
+          </View>
+        </View>
+        <View style={{width:'16%',alignSelf:'center'}}><Text>10</Text></View>
+        <View style={{width:'16%',alignSelf:'center'}}><Text>100</Text></View>
+        <View style={{width:'7%',justifyContent:'center',alignItems:'center'}}>
+        <CheckBox
+            style={{}}
+            value={selectedPlayers?.players?.some(
+              (player: any) => player.name === item.name,
+            )}
+            disabled={
+              selectedPlayersCount === 11 &&
+              !selectedPlayers?.players?.some(
+                (player: any) => player.name === item.name,
+              )
+            }
+            onValueChange={()=>handleTeamSelect(item)}
+          />
+          </View>
+      </Pressable>
+    )
+  }
   return (
     <View
       style={{
+        flex:1,
         paddingHorizontal: moderateScale(16),
-        paddingVertical: moderateScale(8),
       }}
     >
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          marginBottom: moderateScale(10),
-          width: "100%",
-        }}
-      >
-        <Text
-          style={{
-            fontSize: moderateScale(12),
-            fontWeight: "bold",
-            color: "#000",
-          }}
-        >
-          Players
-        </Text>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            columnGap: moderateScale(20),
-          }}
-        >
-          <Text
-            style={{
-              fontSize: moderateScale(12),
-              fontWeight: "bold",
-              color: "#000",
-            }}
-          >
-            Points
-          </Text>
-          <Text
-            style={{
-              fontSize: moderateScale(12),
-              fontWeight: "bold",
-              color: "#000",
-            }}
-          >
-            Credits
-          </Text>
-          <View></View>
-        </View>
+      <View style={styles.header}>
+        <View style={{width:'60%',alignSelf:'center'}}><Text>Player</Text></View>
+        <View style={{width:'15%',alignSelf:'center'}}><Text>Points</Text></View>
+        <View style={{width:'15%',alignSelf:'center'}}><Text>Credits</Text></View>
+        <View style={{width:'7%'}}></View>
       </View>
       <FlatList
         data={teamData}
-        scrollEnabled={false}
+        style={{flex:1}}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{flexGrow:1}}
+        ItemSeparatorComponent={()=>(<View style={{padding:moderateScale(10)}}/>)}
+        ListFooterComponent={()=>(<View style={{marginBottom:moderateScale(70)}}/>)}
         keyExtractor={(item) => item.name}
-        //numColumns={4}
-        renderItem={({ item }) => (
-          // <View
-          //   style={{
-          //     flexDirection: "row",
-          //     justifyContent: "space-between",
-          //     // alignItems: "center",
-          //     marginTop: moderateScale(10),
-          //   }}
-          // >
-          //   <View>
-          //     <Text style={{}}>{item.name}</Text>
-          //   </View>
-          //   <View
-          //     style={{
-          //       flexDirection: "row",
-          //       justifyContent: "space-between",
-          //       // columnGap: moderateScale(20),
-          //     }}
-          //   >
-          //     <Text style={{}}>10</Text>
-          //     <Text style={{}}>100</Text>
-          //     <CheckBox
-          //       style={{}}
-          //       value={selectedPlayers?.players?.some(
-          //         (player) => player.name === item.name,
-          //       )}
-          //       disabled={
-          //         selectedPlayersCount === 11 &&
-          //         !selectedPlayers?.players?.some(
-          //           (player) => player.name === item.name,
-          //         )
-          //       }
-          //       onValueChange={handleTeamSelect.bind(this, item)}
-          //     />
-          //   </View>
-          // </View>
-
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              marginBottom: moderateScale(10),
-              //width: "100%",
-            }}
-          >
-            <Text
-              style={{
-                fontSize: moderateScale(12),
-                textAlign: "left",
-                color: "#000",
-              }}
-            >
-              {item.name}
-            </Text>
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                columnGap: moderateScale(20),
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: moderateScale(12),
-                  color: "#000",
-                  textAlign: "center",
-                }}
-              >
-                10
-              </Text>
-              <Text
-                style={{
-                  fontSize: moderateScale(12),
-
-                  color: "#000",
-                }}
-              >
-                100
-              </Text>
-              <CheckBox
-                style={{}}
-                value={selectedPlayers?.players?.some(
-                  (player) => player.name === item.name,
-                )}
-                disabled={
-                  selectedPlayersCount === 11 &&
-                  !selectedPlayers?.players?.some(
-                    (player) => player.name === item.name,
-                  )
-                }
-                onValueChange={handleTeamSelect.bind(this, item)}
-              />
-            </View>
-          </View>
-        )}
+        renderItem={renderPlayer}
       />
     </View>
   );
 };
 
+
+const styles = StyleSheet.create({
+  header: {
+    flexDirection: 'row',
+    borderBottomColor: '#CCC',
+    paddingVertical: 10,
+  },
+});
 export default TeamSelector;

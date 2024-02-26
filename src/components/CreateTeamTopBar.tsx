@@ -26,7 +26,7 @@ const CreateTeamTopBar = ({
   row,
 }: any) => {
   const route = useRoute();
-  console.log(row, "row from create team top bar");
+  // console.log(row, "row from create team top bar");
   const [teamPlayerCount, setTeamPlayerCount] = useState({
     team1: 0,
     team2: 0,
